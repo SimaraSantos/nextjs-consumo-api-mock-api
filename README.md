@@ -2,7 +2,7 @@
 
 Aplicação web em **Next.js (App Router)**, **TypeScript** e **Tailwind CSS** focada no consumo, exibição e gerenciamento dinâmico de produtos através de uma API simulada.
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
 - **Listagem Dinâmica:** Exibição assíncrona de produtos com preço e nome.
 - **CRUD Operacional:** Botões prontos para **Adicionar Novo Produto**, **Editar** e **Excluir**.
