@@ -1,3 +1,5 @@
+// src/app/api/products/route.ts
+
 import { NextResponse } from 'next/server';
 import { products } from '@/lib/data';
 
@@ -9,12 +11,13 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const newProductData = await request.json();
 
+  // Validação simples
   if (!newProductData.title || !newProductData.price) {
     return NextResponse.json({ error: 'Dados incompletos' }, { status: 400 });
   }
 
   const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
-
+  
   const newProduct = {
     id: newId,
     ...newProductData,
@@ -22,5 +25,5 @@ export async function POST(request: Request) {
 
   products.push(newProduct);
 
-  return NextResponse.json(newProduct, { status: 201 });
+  return NextResponse.json(newProduct, { status: 201 }); // 201 Created
 }

@@ -1,3 +1,4 @@
+// src/app/(components)/ProductList.tsx (versão atualizada)
 import { ProductCard } from "./ProductCard";
 
 export interface Product {
@@ -6,9 +7,11 @@ export interface Product {
   price: number;
 }
 async function getProducts(): Promise<{ products: Product[] }> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const res = await fetch(`${baseUrl}/api/products`, {
-    next: { revalidate: 60 }
+  // A chamada fetch é feita no servidor.
+  // Usamos a URL absoluta quando no servidor.
+  const res = await fetch('${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products', {
+    // cache: 'no-store' // Use para garantir dados sempre frescos (SSR)
+    next: { revalidate: 60 } // Use para revalidar a cada 60s (ISR)
   });
 
   if (!res.ok) {
